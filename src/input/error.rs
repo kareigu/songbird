@@ -75,9 +75,9 @@ impl fmt::Display for Error {
             Error::Dca(_) => write!(f, "opening file DCA failed"),
             Error::Io(e) => e.fmt(f),
             Error::Json {
-                error: _,
+                error: e,
                 parsed_text: _,
-            } => write!(f, "parsing JSON failed"),
+            } => write!(f, "parsing JSON failed: {:?}", e),
             Error::Opus(e) => e.fmt(f),
             Error::Metadata => write!(f, "extracting metadata failed"),
             Error::Stdout => write!(f, "creating stdout failed"),
